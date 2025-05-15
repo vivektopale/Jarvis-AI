@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms and Conditions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap");
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: black;
+      color: white;
+     
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 275px;
+      height: 100vh;
+      padding: 20px;
+      background-color: black;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 100;
+    }
+    
+    .sidebar > p {
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding: 20px;
+      width: 100%;
+      background-color: black;
+      box-shadow: 0px 2px 4px gray;
+      font-size: 18px;
+      color: red;
+      z-index: 100;
+    }
+
+    .sidebar > nav {
+      margin-top: 58px;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      padding: 10px;
+      transition: 0.2s ease-in-out;
+      display: block;
+      border: 1px solid black;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      text-decoration: none;
+      border: 1px solid white;
+      border-radius: 10px;
+      box-shadow: 0px 2px 4px aqua;
+      color: red;
+      text-shadow: 0px 1px 1px aqua;
+    }
+
+    /* Logout */
+    #logout {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+      border: 1px solid gray;
+      padding: 25px 115px;
+      background-color: #33214337;
+      z-index: 100;
+    }
+
+    /* Main container */
+    .con {
+      width: 82%;
+      height: 93vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-left: 1px solid gray;
+      margin-top: 50px;
+      margin-left: 18px;
+      z-index: 0;
+    }
+
+    .main {
+      width: 70%;
+      height: 80%;
+      border: 1px solid rgba(52, 52, 52, 0.715);
+      border-radius: 20px;
+      box-shadow: 0px 2px 10px white;
+      overflow: auto;
+      padding: 20px;
+      transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+    }
+
+    .main.hidden {
+      opacity: 0;
+    }
+
+    /* Scroll bar styling */
+    .main::-webkit-scrollbar {
+      width: 12px;
+    }
+    .main::-webkit-scrollbar-thumb {
+      background-color: aqua;
+      border-radius: 10px;
+      border: 2px solid black;
+    }
+    .main::-webkit-scrollbar-track {
+      background-color: black;
+      border-radius: 10px;
+    }
+
+    .header {
+      text-align: center;
+      font-size: 35px;
+      color: rgb(40, 237, 237);
+      text-shadow: 2px 2px 10px rgb(243, 237, 237);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin: 20px 0 10px;
+      color: rgb(238, 245, 245);
+    }
+    ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+    a {
+      color: rgb(40, 237, 237);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <p>Username: <span class="username" id="loggedUser" style="color: white;">Guest</span></p>
+    <nav>
+      <a href="#" class="nav-link" data-section="acceptance">Acceptance of Terms</a>
+      <a href="#" class="nav-link" data-section="usage">Usage</a>
+      <a href="#" class="nav-link" data-section="privacy">Privacy</a>
+      <a href="#" class="nav-link" data-section="content">Content Accuracy</a>
+      <a href="#" class="nav-link" data-section="limitations">Limitations</a>
+      <a href="#" class="nav-link" data-section="ownership">Ownership</a>
+      <a href="#" class="nav-link" data-section="indemnity">Indemnity</a>
+      <a href="#" class="nav-link" data-section="updates">Changes to Terms</a>
+      <a href="#" class="nav-link" data-section="law">Governing Law</a>
+      <a href="./index.html">Home</a>
+    </nav>
+    <a href="login.html" id="logout">Logout</a>
+  </aside>
+
+  <div class="con">
+    <div class="main">
+      <div class="header">Terms and Conditions</div>
+      <div id="content">
+        <p>Select a section from the sidebar to view details.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Get logged-in user from localStorage
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+      document.getElementById("loggedUser").textContent = loggedInUser;
+    }
+
+    // Section content data
+    const sectionData = {
+  acceptance: `<h2>Acceptance of Terms</h2>
+    <p>By using the JARVIS AI chatbot, you acknowledge and accept these terms.</p>
+    <ul>
+      <li>These terms apply to all users, including visitors, registered accounts, and contributors.</li><br>
+      <li>Continuing to use the service after updates implies acceptance of modified terms.</li><br>
+      <li>You must be of legal age or have parental consent to use the chatbot.</li><br>
+      <li>The chatbot is designed for <strong>educational and informational purposes</strong>; misusing it violates these terms.</li><br>
+      <li>Violations may lead to <strong>restricted access or permanent suspension</strong> of service.</li><br>
+      <li>Users must not attempt to bypass security measures or exploit system vulnerabilities.</li><br>
+      <li>The creators reserve the right to <strong>change, suspend, or terminate the service</strong> at any time.</li><br>
+    </ul>`,
+
+  usage: `<h2>Usage</h2>
+    <ul>
+      <li>Users must interact responsibly and avoid harmful or unethical usage.</li><br>
+      <li>The chatbot <strong>does not replace human professionals</strong> in fields such as medical, legal, or financial advice.</li><br>
+      <li>AI responses may contain errors, outdated information, or incomplete details.</li><br>
+      <li>You <strong>must not generate or share illegal, offensive, or harmful content</strong> using the chatbot.</li><br>
+      <li>Attempts to manipulate AI responses for misinformation or deceptive purposes <strong>are strictly prohibited</strong>.</li><br>
+      <li>Any use of the chatbot for advertising, spam, or automated scripting <strong>is not allowed</strong>.</li><br>
+      <li>The chatbot should not be integrated into systems <strong>without explicit permission</strong> from its creators.</li><br>
+      <li>Users agree to report any <strong>bugs, vulnerabilities, or unethical AI responses</strong> responsibly.</li><br>
+    </ul>`,
+
+  privacy: `<h2>Privacy</h2>
+    <ul>
+      <li>Your interaction data <strong>may be collected</strong> to improve chatbot accuracy and user experience.</li><br>
+      <li>JARVIS AI <strong>does not store sensitive personal data permanently</strong>.</li><br>
+      <li>Do not share <strong>personal information (such as passwords, bank details, or confidential data)</strong> via chatbot interactions.</li><br>
+      <li>Your chats are <strong>not monitored live</strong>, but interactions may be analyzed for AI improvement.</li><br>
+      <li>The chatbot follows the <a href='https://privacy.microsoft.com/en-us/privacystatement' target='_blank'>Privacy Policy</a>.</li><br>
+      <li>If required by law, authorities may request data for security purposes.</li><br>
+      <li>Users have the right to request <strong>data deletion</strong>, subject to applicable privacy policies.</li><br>
+    </ul>`,
+
+  content: `<h2>Content Accuracy</h2>
+    <ul>
+      <li>The chatbot <strong>does not guarantee</strong> that all provided information is completely accurate.</li><br>
+      <li>Responses are generated based on <strong>existing AI models, online data, and user prompts</strong>.</li><br>
+      <li>Users <strong>must fact-check AI-generated responses</strong> before using them for decisions.</li><br>
+      <li>The chatbot <strong>cannot verify sensitive or confidential data</strong>—use external sources for validation.</li><br>
+      <li>Some responses may contain <strong>bias or misinterpretations</strong>, despite AI improvements.</li><br>
+    </ul>`,
+
+  limitations: `<h2>Limitations</h2>
+    <ul>
+      <li>The AI system may experience <strong>technical failures, downtime, or limitations</strong>.</li><br>
+      <li>The chatbot <strong>does not support all languages</strong> or dialects perfectly.</li><br>
+      <li>Users must understand that <strong>AI is constantly evolving</strong>—not all features will be error-free.</li><br>
+      <li>System updates, algorithm changes, or restrictions <strong>may impact functionality</strong> over time.</li><br>
+      <li>The creators are <strong>not liable for damages, losses, or legal consequences</strong> resulting from chatbot usage.</li><br>
+    </ul>`,
+
+  ownership: `<h2>Ownership</h2>
+    <ul>
+      <li>JARVIS AI and its content <strong>belong to its developers and affiliates</strong>.</li><br>
+      <li>Unauthorized reproduction, reverse engineering, or distribution <strong>is strictly prohibited</strong>.</li><br>
+      <li>Users <strong>must not sell or profit</strong> from AI-generated responses without permission.</li><br>
+      <li>Content produced by the chatbot <strong>is subject to applicable intellectual property laws</strong>.</li><br>
+    </ul>`,
+
+  indemnity: `<h2>Indemnity</h2>
+    <ul>
+      <li>Users agree to hold creators harmless from <strong>any claims, damages, or legal issues</strong>.</li><br>
+      <li>JARVIS AI <strong>does not take liability for AI-generated opinions, predictions, or recommendations</strong>.</li><br>
+    </ul>`,
+
+  updates: `<h2>Changes to Terms</h2>
+    <ul>
+      <li>The Terms & Conditions <strong>may be modified at any time</strong>.</li><br>
+      <li>Continued use of the chatbot implies <strong>acceptance of the updated policies</strong>.</li><br>
+      <li>Users should review changes regularly to <strong>stay informed</strong> of new policies.</li><br>
+    </ul>`,
+
+  law: `<h2>Governing Law</h2>
+    <ul>
+      <li>These Terms & Conditions <strong>are legally binding</strong> based on the applicable jurisdiction.</li><br>
+      <li>Users must comply with <strong>cybersecurity regulations, privacy laws, and AI governance policies</strong>.</li><br>
+      <li>Legal disputes must follow <strong>official arbitration or mediation procedures</strong>.</li><br>
+    </ul>`
+};
+
+    // Add event listeners to sidebar links
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const section = event.target.getAttribute("data-section");
+        document.querySelector(".main").classList.add("hidden");
+        setTimeout(() => {
+          document.getElementById("content").innerHTML = sectionData[section];
+          document.querySelector(".main").classList.remove("hidden");
+        }, 300);
+      });
+    });
+  </script>
+</body>
+</html>
