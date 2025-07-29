@@ -4,7 +4,7 @@ const chatContainer = document.querySelector(".chat-container");
 const imageBtn = document.getElementById("image");
 const imageInput = document.querySelector("#image input");
 
-const API_KEY = "AIzaSyCYYq7PfJ2wmVdNgY7h7lmP0ebqgEo8XrQ";
+const API_KEY = //"Paste your API key here ";
 const Api_Url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
 // Object to hold the current user message and image file (if any)
