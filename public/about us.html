@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | JARVIS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: black;
+      color: white;
+      font-family:'Times New Roman', Times, serif;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 275px;
+      height: 100vh;
+      padding: 20px;
+      background-color: black;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 100;
+    }
+
+    .sidebar > p {
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding: 20px;
+      width: 100%;
+      background-color: black;
+      box-shadow: 0px 2px 4px gray;
+      font-size: 18px;
+      color: red;
+      z-index: 100;
+    }
+
+    .sidebar > nav {
+      margin-top: 58px;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      padding: 10px;
+      transition: 0.2s ease-in-out;
+      display: block;
+      border: 1px solid black;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      border: 1px solid white;
+      border-radius: 10px;
+      box-shadow: 0px 2px 4px aqua;
+      color: red;
+      text-shadow: 0px 1px 1px aqua;
+    }
+
+    /* Logout */
+    #logout {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+      border: 1px solid gray;
+      padding: 25px 108px;
+      background-color: #33214337;
+      z-index: 100;
+    }
+
+    /* Main container */
+    .main {
+      flex-grow: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid gray;
+      z-index: 1;
+      width: 70%;
+      transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+    }
+
+    .main.hidden {
+      opacity: 0;
+    }
+
+    .header {
+      font-size: 35px;
+      color: aqua;
+      text-shadow: 1px 4px 4px aqua;
+      margin-bottom: 20px;
+    }
+
+    .about-content {
+      width: 78%;
+      height: 70vh;
+      padding: 20px;
+      border-radius: 15px;
+      background-color: rgb(0, 0, 0);
+      box-shadow: 0px 2px 10px white;
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    /* Scroll Bar Styling */
+    .about-content::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .about-content::-webkit-scrollbar-thumb {
+      background-color: aqua;
+      border-radius: 10px;
+      border: 2px solid black;
+    }
+
+    .about-content::-webkit-scrollbar-track {
+      background-color: black;
+      border-radius: 10px;
+    }
+
+    .highlight {
+      color: aqua;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <p>Username: <span class="username" id="loggedUser" style="color: white;">Guest</span></p>
+    <nav>
+      <a href="#" class="nav-link" data-section="about">About JARVIS AI</a>
+      <a href="#" class="nav-link" data-section="mission">Mission & Goals</a>
+      <a href="#" class="nav-link" data-section="security">Security & Privacy</a>
+      <a href="#" class="nav-link" data-section="innovation">AI Innovation</a>
+      <a href="#" class="nav-link" data-section="future">Future of AI Communication</a>
+      <a href="./index.html">Home</a>
+    </nav>
+    <a href="login.html" id="logout">Logout</a>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="header">About Us</div>
+    <div class="about-content" id="content">
+      <p>Select a section from the sidebar to learn more.</p>
+    </div>
+  </div>
+
+  <script>
+    // Get logged-in user from localStorage
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+      document.getElementById("loggedUser").textContent = loggedInUser;
+    }
+
+    // Section data
+    const sectionData = {
+  about: `<h2>About JARVIS AI</h2><br><br>
+    <p>Welcome to <strong>JARVIS AI Chatbot</strong>—a revolutionary AI-driven assistant designed to make conversations smarter, faster, and more intuitive.</p><br>
+    <p>JARVIS AI integrates cutting-edge technology to create an interactive experience that is intelligent, responsive, and continuously evolving.</p><br>
+    <p>Whether you need answers to questions, creative assistance, or help with everyday tasks, JARVIS AI ensures a seamless and efficient interaction tailored to your needs.</p><br>
+    <p>With state-of-the-art machine learning models, JARVIS understands human language, interprets queries effectively, and refines responses dynamically.</p><br>
+    <p>Designed for users of all backgrounds, JARVIS AI is your go-to solution for **educational support, productivity enhancement, and engaging AI conversations.</p>`,
+
+  mission: `<h2>Mission & Goals</h2><br>
+    <p><strong>Our mission is simple:</strong> to bridge the gap between humans and AI, creating a digital assistant that is natural, reliable, and highly intuitive.</p>
+    <br><ul>
+      <li>To enhance AI-human interactions by providing **accurate, engaging, and dynamic responses**.</li><br>
+      <li>To foster **a trustworthy AI environment** through secure communication and ethical chatbot development.</li><br>
+      <li>To promote continuous learning, allowing JARVIS AI to **improve its intelligence with every interaction**.</li><br>
+      <li>To **streamline productivity and decision-making**, making AI an integral part of daily life.</li><br>
+      <li>To make AI more **accessible**, ensuring users of all skill levels can benefit from its capabilities.</li><br>
+      <li>To innovate in **voice recognition, contextual understanding, and adaptive learning** for future AI models.</li><br>
+      <li>To revolutionize **digital communication**, allowing seamless integration into various industries and services.</li><br>
+      <li>To **empower users** by giving them an AI companion that understands, assists, and evolves with them.</li><br>
+    </ul>`,
+
+  security: `<h2>Security & Privacy</h2><br>
+    <p>JARVIS AI prioritizes <strong>user security and data privacy</strong> by implementing industry-leading encryption and secure protocols.</p>
+    <br><ul>
+      <li>All user interactions are safeguarded using **end-to-end encryption** to prevent unauthorized access.</li><br>
+      <li>JARVIS AI **does not permanently store sensitive personal data**, ensuring confidentiality.</li><br>
+      <li>Users are advised to **avoid sharing personal, financial, or confidential information** within AI conversations.</li><br>
+      <li>Our chatbot operates under strict **privacy policies**, as outlined in our <a href='https://privacy.microsoft.com/en-us/privacystatement' target='_blank'>Privacy Policy</a>.</li><br>
+      <li>All AI responses are generated dynamically, **preventing long-term data retention**.</li><br>
+      <li>Security protocols are continually updated to **protect against vulnerabilities** and ensure safe AI use.</li><br>
+      <li>JARVIS AI complies with **global cybersecurity standards** to ensure responsible AI deployment.</li><br>
+      <li>Transparency is key—users can view how their data is handled and opt-out of certain AI analytics.</li><br>
+    </ul>`,
+
+  innovation: `<h2>AI Innovation</h2><br>
+    <p>JARVIS AI is built on **advanced machine learning algorithms**, allowing it to adapt, learn, and improve continuously.</p><br>
+    <ul>
+      <li>Utilizes **neural network models** for natural language understanding and conversational flow.</li><br>
+      <li>Supports **multi-language processing**, expanding accessibility for global users.</li><br>
+      <li>Incorporates **predictive learning**, tailoring responses based on past interactions.</li><br>
+      <li>Developed with **contextual awareness**, allowing deeper and more meaningful discussions.</li><br>
+      <li>Uses AI-driven **speech recognition** for seamless voice interactions.</li><br>
+      <li>Enhances chatbot intelligence with **sentiment analysis**, responding appropriately to tone and mood.</li><br>
+      <li>Works in **collaboration with real-world applications**, integrating AI for **business automation, content creation, and smart assistance**.</li><br>
+      <li>Continuously improves through **user feedback and AI research**, refining response accuracy and conversational capabilities.</li><br>
+    </ul>`,
+
+  future: `<h2>Future of AI Communication</h2><br>
+    <p>The future of AI-driven conversations is limitless, and JARVIS AI is shaping the next generation of **intelligent, natural, and adaptive AI assistance**.</p><br>
+    <ul>
+      <li>Integrating **real-time voice communication**, allowing JARVIS to respond with speech.</li><br>
+      <li>Expanding its ability to **analyze complex queries** and provide in-depth responses with contextual awareness.</li><br>
+      <li>Enhancing **AI emotional intelligence**, making interactions feel more human-like.</li><br>
+      <li>Developing AI-powered **decision-making assistance** for professionals, businesses, and educational sectors.</li><br>
+      <li>Ensuring **higher AI transparency**, educating users about chatbot processing and ethical AI use.</li><br>
+      <li>Introducing **multi-modal AI**, combining text, voice, images, and data visualization for a richer experience.</li><br>
+      <li>Integrating AI assistants into **smart devices, IoT systems, and personalized digital ecosystems**.</li><br>
+      <li>Leading research in **responsible AI deployment**, ensuring ethical and unbiased AI development.</li><br>
+    </ul>
+    <p>JARVIS AI is constantly evolving to redefine the way humans interact with artificial intelligence.</p>`
+};
+
+    // Event listeners for navigation
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const section = event.target.getAttribute("data-section");
+        document.querySelector(".main").classList.add("hidden");
+        setTimeout(() => {
+          document.getElementById("content").innerHTML = sectionData[section];
+          document.querySelector(".main").classList.remove("hidden");
+        }, 300);
+      });
+    });
+  </script>
+
+</body>
+</html>
