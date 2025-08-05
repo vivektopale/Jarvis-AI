@@ -387,7 +387,8 @@ article {
   }
   .chat-container{
     overflow: scroll;
-    height: 400px;;
+    height: 400px;
+    font-size: 14px;
   }
   #logoutBtn {
     width: 10vw;
@@ -403,4 +404,5 @@ article {
     border: none;
   }
 }
+
 
