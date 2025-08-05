@@ -50,6 +50,10 @@ async function generateResponse(aiChatBox) {
   });
 
   try {
+        chatContainer.scrollTo({
+      top: chatContainer.scrollHeight,
+      behavior: "smooth",
+    });
     let response = await fetch(Api_Url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -150,4 +154,5 @@ imageInput.addEventListener("change", () => {
 // Click the image button to trigger file input
 imageBtn.addEventListener("click", () => {
   imageBtn.querySelector("input").click();
+
 });
