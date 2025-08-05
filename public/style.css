@@ -35,9 +35,11 @@ nav>p{
     position: fixed;
     z-index: 100;
     color:red;
+    font-size: 18px;
 }
 nav p>i,span{
     color:white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .n1{
     margin-top: 45px;
@@ -245,4 +247,159 @@ article {
     filter: drop-shadow(2px 2px 20px rgb(8, 8, 8));
     background-color: transparent;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+@media (max-width: 480px) {
+  body {
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    font-size: 14px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: auto;
+    padding: 10px;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .header > img {
+    position: static;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    margin-top: -20px;
+    gap: 10px;
+    position: static;
+  }
+
+  nav > p {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    font-size: 10px;
+  }
+
+  nav > a {
+    width: auto;
+    margin: 5px;
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .hr {
+    display: none;
+  }
+
+  .main {
+    width: 95%;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+
+  .chat-container {
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .user-chat-box,
+  .ai-chat-box {
+    width: 100%;
+    left: 0;
+  }
+
+
+  .user-chat-area,
+  .ai-chat-area {
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  #userimage,
+  #aiimage {
+    position: static;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+  }
+
+  .prompt-area {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+  }
+
+  .prompt-area input {
+    width: 80%;
+    height: 40px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+
+  .prompt-area button,
+  .prompt-area > a {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+  .prompt-area .bn{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    position: absolute;
+    box-shadow: none;
+  }
+  .prompt-area #image{
+    left: 0%;
+  }
+   .prompt-area a{
+    right: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .prompt-area #submit{
+   visibility: hidden;
+  }
+  .ai-chat-area{
+    width: 90%;
+  }
+  .chat-container{
+    overflow: scroll;
+    height: 400px;;
+  }
+  #logoutBtn {
+    width: 10vw;
+    height: 5vh;
+    font-size: 8px;
+    position: fixed;
+    top: 0;
+    left: 88%;
+    /* right: 100%; */
+    z-index: 10000;
+    padding: 2px 2px;
+    margin: 2%;
+    border: none;
+  }
 }
