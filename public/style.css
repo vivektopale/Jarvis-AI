@@ -263,7 +263,7 @@ article {
     gap: 20px;
     height: auto;
     padding: 10px;
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
   }
 
@@ -403,3 +403,4 @@ article {
     border: none;
   }
 }
+
