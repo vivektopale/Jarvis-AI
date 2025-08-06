@@ -54,12 +54,12 @@ async function generateResponse(aiChatBox) {
       top: chatContainer.scrollHeight,
       behavior: "smooth",
     });
-    let response = await fetch(Api_Url, {
+    let res = await fetch(Api_Url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: requestBody
     });
-    let data = await response.json();
+    let data = await res.json();
     let apiResponse = data.candidates[0].content.parts[0].text
       .replace(/\*\*(.*?)\*\*/g, "$1")
       .trim();
@@ -156,3 +156,4 @@ imageBtn.addEventListener("click", () => {
   imageBtn.querySelector("input").click();
 
 });
+
